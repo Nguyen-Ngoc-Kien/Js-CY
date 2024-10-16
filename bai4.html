@@ -21,10 +21,18 @@
     </div>
     <script>
         const liNodeList = document.getElementsByTagName('li');
+        const ulNodeBefore = document.getElementsByTagName('ul')[0];
+        const ulNodeAfter = document.getElementsByTagName('ul')[1];
         const buttonNode = document.querySelector('button');
         buttonNode.addEventListener('click', function(){
-            console.log("copy");
-            document.getElementsByTagName('ul')[1].appendChild(liNodeList);
+            const items = Array.from(ulNodeBefore.children);
+  
+            ulNodeAfter.innerHTML = '';
+
+            items.forEach(item => {
+                const clonedItem = item.cloneNode(true);
+                ulNodeAfter.appendChild(clonedItem); 
+            })
         })
     </script>
 </body>
