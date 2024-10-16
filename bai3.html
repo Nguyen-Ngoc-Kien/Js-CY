@@ -18,16 +18,17 @@
     </div>
     <script>
         const liNodeList = document.getElementsByTagName('li');
+        const ulNodeList = document.querySelector('ul');
         const buttonNode = document.querySelector('button');
         buttonNode.addEventListener('click', function(){
-            var liNodeListAfter = liNodeList;
-            console.log("change");
-            for(let i = 0; i < Math.floor(liNodeListAfter.length / 2); i++){
-                let temp = liNodeListAfter[i];
-                liNodeListAfter[i] = liNodeListAfter[liNodeListAfter.length - 1 - i]
-                liNodeListAfter[liNodeListAfter.length - 1 - i] = temp
-            }
-            console.log(liNodeListAfter)
+            const items = Array.from(ulNodeList.children);
+            const reversedItems = items.reverse();
+
+            ulNodeList.innerHTML = '';
+
+            reversedItems.forEach(item => {
+                ulNodeList.appendChild(item);
+            });
         })
     </script>
 </body>
